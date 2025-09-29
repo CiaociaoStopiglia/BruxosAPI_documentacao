@@ -15,9 +15,9 @@ const getAllBruxos = (req, res) => {
 
 const getBruxosById = (req, res) => {
     const id = parseInt(req.params.id);
-    const bruxos = bruxos.find(m => m.id === id);
+    const bruxo = bruxos.find(m => m.id === id);
 
-    if (!bruxos) {
+    if (!bruxo) {
         res.status(404).json({
             success: false,
             message: `Nenhum bruxo foi encontrado no Beco Diagonal com o id ${id}`
@@ -25,8 +25,8 @@ const getBruxosById = (req, res) => {
     }
 
     res.status(200).json({
-        total: bruxos.length,
-        data: bruxos
+        total: bruxo.length,
+        data: bruxo
     })
 }
 
@@ -110,7 +110,7 @@ const createBruxo= (req, res) => {
         foto
     }
 
-    bruxos.push(novaMonster);
+    bruxos.push(novoBruxo);
 
     res.status(201).json({
         success: true,
@@ -167,7 +167,7 @@ const updateBruxo = (req, res) => {
         });
     }
 
-    const bruxoExiste = monsters.find(m => m.id === id);
+    const bruxoExiste = bruxos.find(m => m.id === id);
 
     if (!bruxoExiste) {
         return res.status(404).json({
@@ -221,7 +221,7 @@ const updateBruxo = (req, res) => {
 
     res.status(200).json({
         success: true,
-        message: "Monstro atualizado com sucesso",
+        message: "Bruxo atualizado com sucesso",
         bruxo: bruxoFinal
     })
 
